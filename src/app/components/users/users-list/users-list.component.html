@@ -16,7 +16,7 @@
         <td>{{ user.firstName }}</td>
         <td>{{ user.lastName }}</td>
         <td>{{ user.email }}</td>
-        <td><a [routerLink]="['/users/edit', user.id]">View</a></td>
+        <td><a class="view-user-details" [routerLink]="['/users/edit', user.id]">View</a></td>
       </tr>
     </tbody>
   </table>
