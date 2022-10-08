@@ -48,4 +48,12 @@ export class EditUserComponent implements OnInit {
         },
       });
   }
+
+  deleteUser(id: number) {
+    this.userService.deleteUser(id).subscribe({
+      next: (user) => {
+        this.router.navigate(['users']);
+      },
+    });
+  }
 }

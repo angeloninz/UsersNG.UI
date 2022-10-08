@@ -3,7 +3,7 @@
 
   <div class="row">
     <div class="col-6">
-      <form #form="ngForm" (ngSubmit)="addUser()">
+      <form #form="ngForm" (ngSubmit)="addUser(form)">
         <div class="mb-3">
           <label for="firstname" class="form-label">First Name</label>
           <input
@@ -12,6 +12,7 @@
             id="firstname"
             name="firstname"
             [(ngModel)]="addUserRequest.firstName"
+            required
           />
         </div>
         <div class="mb-3">
@@ -22,6 +23,7 @@
             id="lastname"
             name="lastname"
             [(ngModel)]="addUserRequest.lastName"
+            required
           />
         </div>
         <div class="mb-3">
@@ -32,6 +34,7 @@
             id="email"
             name="email"
             [(ngModel)]="addUserRequest.email"
+            required
           />
         </div>
         <div class="mb-3">
@@ -42,9 +45,24 @@
             id="password"
             name="password"
             [(ngModel)]="addUserRequest.password"
+            required
           />
         </div>
         <button type="submit" class="btn btn-primary">Save</button>
+        <div
+          class="alert alert-danger mt-2"
+          rolet="alert"
+          *ngIf="isFormInValid"
+        >
+          Please enter all fields!
+        </div>
+        <div
+          class="alert alert-danger mt-2"
+          rolet="alert"
+          *ngIf="emailAlreadyExists"
+        >
+          Email already exists!
+        </div>
       </form>
     </div>
   </div>

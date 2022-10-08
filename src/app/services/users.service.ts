@@ -35,7 +35,7 @@ export class UsersService {
     );
   }
 
-  deleteUser(id: string): Observable<UserResponse> {
+  deleteUser(id: number): Observable<UserResponse> {
     return this.http.delete<UserResponse>(this.baseApiUrl + '/api/users/' + id);
   }
 }

@@ -5,11 +5,11 @@ import { User } from 'src/app/models/user.model';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
-  selector: 'app-add-user',
-  templateUrl: './add-user.component.html',
-  styleUrls: ['./add-user.component.css'],
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css'],
 })
-export class AddUserComponent implements OnInit {
+export class RegisterComponent implements OnInit {
   isFormInValid = false;
   emailAlreadyExists = false;
   addUserRequest: User = {
@@ -18,11 +18,9 @@ export class AddUserComponent implements OnInit {
     email: '',
     password: '',
   };
-
   constructor(private userService: UsersService, private router: Router) {}
 
   ngOnInit(): void {}
-
   addUser(addForm: NgForm) {
     if (!addForm.valid) {
       this.isFormInValid = true;
@@ -31,10 +29,10 @@ export class AddUserComponent implements OnInit {
     this.userService.addUser(this.addUserRequest).subscribe({
       next: (user) => {
         //console.log(user);
-        this.router.navigate(['users']);
+        this.router.navigate(['']);
       },
       error: (response) => {
-        //console.log(response.status);
+        //console.log(response);
         if (response.status === 409) {
           this.isFormInValid = false;
           this.emailAlreadyExists = true;
