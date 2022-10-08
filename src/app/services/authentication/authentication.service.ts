@@ -78,6 +78,6 @@ export class AuthenticationService {
     this.isAuthenticated = false;
     localStorage.removeItem('authToken');
     this._isLoggedIn$.next(false);
-    this.router.navigate(['']);
+    this.router.navigate(['/login']);
   }
 }
